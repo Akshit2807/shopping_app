@@ -21,7 +21,10 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: pages[currentPage],
+      body: IndexedStack(
+        index: currentPage,
+        children: pages,
+      ),
       bottomNavigationBar: BottomNavigationBar(
         onTap: (value) {
           setState(() {
@@ -29,6 +32,9 @@ class _HomePageState extends State<HomePage> {
           });
         },
         currentIndex: currentPage,
+        iconSize: 28,
+        selectedFontSize: 0,
+        unselectedFontSize: 0,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
           BottomNavigationBarItem(icon: Icon(Icons.shopping_cart), label: ''),
